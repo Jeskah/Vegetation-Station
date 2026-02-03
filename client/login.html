@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | VEGATAION STATION</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="login.js"></script>
+  </head>
+  <body class="light-mode login-page">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img
+        src="./assets/logo.png"
+        alt="Vegatation Station Logo"
+        class="logo seed"
+      />
+    </div>
+
+    <!-- Login Box -->
+    <div class="login-box">
+      <h2>Login</h2>
+
+      <!-- Form -->
+      <form
+        id="loginForm"
+        onsubmit="
+          login();
+          return false;
+        "
+      >
+        <input
+          id="username"
+          type="text"
+          placeholder="Username"
+          autocomplete="username"
+          required
+        />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="current-password"
+          required
+        />
+
+        <button type="submit">Enter Garden</button>
+      </form>
+
+      <p style="margin: 10px 0">Don’t have an account?</p>
+
+      <button
+        onclick="window.location.href = 'register.html'"
+        class="secondary-btn"
+      >
+        Register
+      </button>
+
+      <p id="loginError"></p>
+
+      <button class="modeBtn" onclick="toggleMode()">🌞 / 🌙</button>
+    </div>
+
+    <footer>MadeBy-Char-Gem-Jess-Con-2026</footer>
+  </body>
+</html>

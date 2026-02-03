@@ -2,44 +2,92 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>client</title>
+    <title>VEGETATION STATION</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
-  <body>
+  <body class="light-mode">
+    <h1>🌱 VEGETATION STATION 🌱</h1>
 
-        <img src="assets/logo.png" alt="logo" class="logo">
+    <div
+      id="greeting"
+      style="text-align: center; margin-bottom: 10px; font-weight: bold"
+    ></div>
 
-<div id="loginView" class="login-window">
+    <div class="logo-container">
+      <img
+        src="./assets/logo.png"
+        alt="Vegatation Station Logo"
+        class="logo seed"
+      />
+    </div>
 
-  <form id="loginForm" class="user-pw">
+    <div style="text-align: right; margin-bottom: 10px">
+      <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
 
+    <!-- Toggle Dark/Light Mode -->
+    <div style="text-align: left; margin-bottom: 10px">
+      <button onclick="toggleMode()">Toggle Dark / Light Mode</button>
+    </div>
 
-    <input name="username" placeholder="Username" required class="input"/>
+    <div class="form">
+      <input id="vegName" type="text" placeholder="Vegetable name" />
+      <input id="plantDate" type="date" />
 
-    <input name="password" type="password" required class="input" />
+      <select id="health">
+        <option value="healthy">✅ Healthy</option>
+        <option value="warning">⚠️ Needs Attention</option>
+        <option value="problem">❌ Problem</option>
+      </select>
 
+      <textarea
+        id="notes"
+        placeholder="Health notes (pests, yellow leaves, slow growth...)"
+      ></textarea>
 
-    <button type="submit" class="gro-btn">gro</button>
+      <input id="photo" type="file" accept="image/*" />
 
-<div class="signup-box">
-  <p>sign up</p>
-</div>
+      <button onclick="addVegetable()">Add Vegetable</button>
+    </div>
 
-  </form>
+    <div id="calendar"></div>
 
-</div>
+    <!-- Modal -->
+    <div id="photoModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalHealth"></p>
+        <label for="modalNotesInput">Edit Notes:</label>
+        <textarea id="modalNotesInput"></textarea>
+        <button onclick="saveNotes()">Save Notes</button>
+        <button onclick="deleteEvent()" class="deleteBtn">
+          Delete Vegetable
+        </button>
+        <img id="modalPhoto" src="" alt="Plant Photo" />
+      </div>
+    </div>
 
-<div id="appView" hidden>
-  <h2>You’re logged in 🌱</h2>
-  <p>Here are your plants and to-dos.</p>
-  <!-- later: mount another app here -->
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-<video src="assets/Free_Stock_Video.mp4" autoplay muted loop playsinline></video>
-
-
-    <script type="module" src="/src/main.js" defer></script>
+    <!-- Footer -->
+    <footer
+      style="
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 0.9rem;
+        color: #555;
+      "
+    >
+      MadeBy-Char-Gem-Jess-Con-2026
+    </footer>
   </body>
 </html>
