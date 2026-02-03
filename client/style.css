@@ -1,108 +1,276 @@
-/* @import"tailwindcss"; */
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
+* {
   box-sizing: border-box;
 }
 
-.signup-box {
+body.light-mode {
+  background: #f1fff1;
+  color: #000;
+}
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input,
+select,
+textarea,
+button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #1f1f1f;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+textarea {
+  min-height: 70px;
+}
+
+button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:active {
+  background: #43a047;
+}
+button.deleteBtn {
+  background: #f44336;
+  margin-top: 5px;
+}
+
+#calendar {
+  background: white;
+  border-radius: 10px;
+  padding: 6px;
+}
+body.dark-mode #calendar {
+  background: #1f1f1f;
+}
+
+.healthy {
+  background-color: #4caf50 !important;
+}
+.warning {
+  background-color: #ff9800 !important;
+}
+.problem {
+  background-color: #f44336 !important;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  text-align: center;
+}
+body.dark-mode .modal-content {
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+}
+
+.modal img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
   cursor: pointer;
 }
 
-.logo {
-  top: 8rem;
-  filter: contrast(10);
-  opacity: 70%;
+/* Desktop */
+@media (min-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  .form {
+    max-width: 800px;
+    margin: auto;
+  }
 }
 
-input {
-  height: 8px;
-  border: none;
-  border-radius: 7px;
-  outline: none;
-  padding: 0.8rem;
-  appearance: none;
-}
-
-  .user-pw {
-    display: flex;
-    align-items: center;
-    padding: clamp(1rem, 6vw, 2rem);
-
-    gap: 1rem;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 15px;
-    }
-
-
-
-img {
+/* Login page */
+.login-page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  width: 70px;
-  height: 70px;
+  min-height: 100vh;
 }
 
-  div.signup-box {
-    position: absolute;
-    top: 12rem;
-    padding: 0;
-    margin: 0;
-  }
-
-@media (max-width: 425px) {
-
-  video {
-    position: fixed;
-    inset: 0;
-    top: -5%;
-    left: -5%;
-    width: 140vw;
-    height: 140vh;
-    filter: blur(20px);
-    object-fit: cover;
-    z-index: -1;
-  }
-
-  .user-pw {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(1rem, 6vw, 2rem);
-
-    gap: 1rem;
-
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 15px;
-    }
-
-  button {
-    height: 2rem;
-    width: 4rem;
-    border-radius: 7px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.131);
-    border-style: none;
-
-  }
-
-  .login-window {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-
-p {
-  font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: underline;
+.login-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
 }
+
+body.dark-mode .login-box {
+  background: #1f1f1f;
+}
+
+.login-box h2 {
+  margin-bottom: 5px;
+}
+
+.login-box button {
+  background: #4caf50;
+}
+
+#loginError {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.modeBtn {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #ccc;
+}
+.logout-btn {
+  background: #f44336;
+}
+/* Logo */
+.logo-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+}
+
+/* Dark mode logo tweak (optional) */
+body.dark-mode .logo {
+  filter: brightness(0.9);
+}
+/* Subtle logo animation */
+.logo {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+
+  animation: plantBreath 6s ease-in-out infinite;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+  cursor: pointer;
+}
+/* Hover / touch grow */
+.logo:hover,
+.logo:active {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 6px 10px rgba(0, 128, 0, 0.25));
+}
+
+/* Gentle floating + breathing */
+@keyframes plantBreath {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+/* Seed state (before sprout) */
+.logo.seed {
+  transform: scale(0.2) translateY(20px);
+  opacity: 0;
+}
+
+/* Sprout animation */
+.logo.sprout {
+  animation:
+    seedToSprout 1.6s ease-out forwards,
+    plantBreath 6s ease-in-out infinite 1.6s;
+}
+
+@keyframes seedToSprout {
+  0% {
+    transform: scale(0.2) translateY(20px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1) translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.secondary-btn {
+  background: transparent;
+  color: inherit;
+  border: 1px solid #4caf50;
+}
+
+.secondary-btn:hover {
+  background: rgba(76, 175, 80, 0.1);
+}
+#greeting {
+  font-size: 1.1rem;
+  color: #4caf50;
+}
+
+body.dark-mode #greeting {
+  color: #81c784;
 }
