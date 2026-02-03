@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>client</title>
+  </head>
+  <body>
+
+        <img src="assets/logo.png" alt="logo" class="logo">
+
+<div id="loginView" class="login-window">
+
+  <form id="loginForm" class="user-pw">
+
+
+    <input name="username" placeholder="Username" required class="input"/>
+
+    <input name="password" type="password" required class="input" />
+
+
+    <button type="submit" class="gro-btn">gro</button>
+
+<div class="signup-box">
+  <p>sign up</p>
+</div>
+
+  </form>
+
+</div>
+
+<div id="appView" hidden>
+  <h2>You’re logged in 🌱</h2>
+  <p>Here are your plants and to-dos.</p>
+  <!-- later: mount another app here -->
+</div>
+
+<video src="assets/Free_Stock_Video.mp4" autoplay muted loop playsinline></video>
+
+
+    <script type="module" src="/src/main.js" defer></script>
+  </body>
+</html>
