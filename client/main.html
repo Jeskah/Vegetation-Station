@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="/src/main.js" defer></script>
     <title>🌱 VEGETATION STATION 🌱</title>
   </head>
   <body class="light-mode">
@@ -27,7 +33,7 @@
 
     <!-- Toggle Dark/Light Mode -->
     <div style="text-align: left; margin-bottom: 10px">
-      <button onclick="toggleMode()">Toggle Dark / Light Mode</button>
+      <button onclick="toggleMode()">Toggle Mode</button>
     </div>
 
     <div class="form">
@@ -51,12 +57,6 @@
     </div>
 
     <div id="calendar"></div>
-    <link
-      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script src="/src/app.js" defer></script>
 
     <!-- Modal -->
     <div id="photoModal" class="modal">
