@@ -1,20 +1,21 @@
-// ----- Seed → Sprout Logo Animation -----
-document.addEventListener("DOMContentLoaded", () => {
-  const logo = document.querySelector(".logo");
+initialView: ("dayGridMonth",
+  // ----- Seed → Sprout Logo Animation -----
+  document.addEventListener("DOMContentLoaded", () => {
+    const logo = document.querySelector(".logo");
 
-  if (!logo) return;
+    if (!logo) return;
 
-  if (!localStorage.getItem("sproutPlayed")) {
-    setTimeout(() => {
+    if (!localStorage.getItem("sproutPlayed")) {
+      setTimeout(() => {
+        logo.classList.remove("seed");
+        logo.classList.add("sprout");
+        localStorage.setItem("sproutPlayed", "true");
+      }, 300);
+    } else {
       logo.classList.remove("seed");
       logo.classList.add("sprout");
-      localStorage.setItem("sproutPlayed", "true");
-    }, 300);
-  } else {
-    logo.classList.remove("seed");
-    logo.classList.add("sprout");
-  }
-});
+    }
+  }));
 
 // ----- Show greeting -----
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,14 +39,39 @@ function saveUserEvents(events) {
 
 // ----- Calendar Setup -----
 
-const calendarEl = document.getElementById("calendar");
-const calendar = new Calendar(calendarEl, {
-  plugins: [dayGridPlugin],
-  initialView: "dayGridMonth",
-  events: [{ title: "Meeting", start: new Date() }],
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const calendarEl = document.getElementById("calendar");
 
-calendar.render();
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "dayGridMonth",
+    eventClick(info) {
+      selectedEvent = info.event;
+
+      document.getElementById("modalTitle").textContent = info.event.title;
+      document.getElementById("modalHealth").textContent =
+        `Health: ${info.event.extendedProps.health}`;
+      document.getElementById("modalNotesInput").value =
+        info.event.extendedProps.notes || "";
+
+      if (info.event.extendedProps.photo) {
+        document.getElementById("modalPhoto").src =
+          info.event.extendedProps.photo;
+        document.getElementById("modalPhoto").style.display = "block";
+      } else {
+        document.getElementById("modalPhoto").style.display = "none";
+      }
+
+      document.getElementById("photoModal").style.display = "block";
+    },
+  });
+
+  calendar.render();
+
+  // Load saved events
+  getUserEvents().forEach((e) => calendar.addEvent(e));
+
+  window.calendar = calendar; // make it global
+});
 
 // Load saved events for this user
 const savedEvents = getUserEvents();
